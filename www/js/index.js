@@ -159,7 +159,7 @@ function register(){
  
  
  function successCallbackSim(result) {
-      alert(result);
+      alert(JSON.stringify(result));
 }
 
 function errorCallbackSim(error) {
