@@ -25,8 +25,8 @@
  
 var ref;
 
-var mainDomain  	= "gietimes.com";
-var mainHomeUrl 	= "https://gietimes.com/";  //with backslash
+var mainDomain  	= "atm.berbagiyuk.com";
+var mainHomeUrl 	= "http://www.atm.berbagiyuk.com/";  //with backslash
 var is_inappbrowser = false;
  
 var inappbrowserStartCallback = 
@@ -87,8 +87,8 @@ function openBrowserListenerInit(starturl){
 }
 
 function goToHome() {
-    //var starturl = mainHomeUrl;
-	var starturl = "https://gietimes.com/apps/index.php"
+    var starturl = mainHomeUrl;
+	//var starturl = "https://gietimes.com/apps/index.php"
 	if(is_inappbrowser){
 		openBrowserListenerInit(starturl);
 	}else{
@@ -195,9 +195,10 @@ function register(){
             }
 			
 			var theUrl = mainHomeUrl+"android/pusher/initdevice.php?deviceid="+data.registrationId;
-			var xmlHttp = new XMLHttpRequest();
-			xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-			xmlHttp.send( null );
+			alert(theUrl);
+			//var xmlHttp = new XMLHttpRequest();
+			//xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+			//xmlHttp.send( null );
 
             var parentElement = document.getElementById('registration');
             var listeningElement = parentElement.querySelector('.waiting');
