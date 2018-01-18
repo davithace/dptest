@@ -188,7 +188,7 @@ function register(){
         console.log('Received Device Ready Event');
         console.log('calling setup push');
 		register();
-		askGPSactivation()
+		//askGPSactivation();
 		//setTimeout(function(){ register(); }, 5000);
 		
 		
