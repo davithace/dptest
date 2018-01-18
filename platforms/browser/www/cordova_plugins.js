@@ -64,11 +64,11 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cl.rmd.cordova.dialoggps/www/DialogGPS.js",
-        "id": "cl.rmd.cordova.dialoggps.DialogGPS",
-        "pluginId": "cl.rmd.cordova.dialoggps",
-        "clobbers": [
-            "cordova.dialogGPS"
+        "file": "plugins/cordova-plugin-sim/www/sim.js",
+        "id": "cordova-plugin-sim.Sim",
+        "pluginId": "cordova-plugin-sim",
+        "merges": [
+            "window.plugins.sim"
         ]
     }
 ];
@@ -83,7 +83,7 @@ module.exports.metadata =
     "phonegap-plugin-push": "1.8.4",
     "cordova-plugin-geolocation": "2.1.0",
     "cordova-plugin-request-location-accuracy": "2.2.2",
-    "cl.rmd.cordova.dialoggps": "0.0.2"
+    "cordova-plugin-sim": "1.3.3"
 }
 // BOTTOM OF METADATA
 });

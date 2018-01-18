@@ -32,7 +32,7 @@
     "cordova-plugin-request-location-accuracy": {
       "PACKAGE_NAME": "com.gietimestest.android"
     },
-    "cl.rmd.cordova.dialoggps": {
+    "cordova-plugin-sim": {
       "PACKAGE_NAME": "com.gietimestest.android"
     }
   },

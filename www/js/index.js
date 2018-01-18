@@ -170,6 +170,15 @@ function register(){
 	app.setupPush();
 }
  
+ 
+ function successCallbackSim(result) {
+      alert(result);
+}
+
+function errorCallbackSim(error) {
+      alert(error);
+}
+
  var app = {
     // Application Constructor
     initialize: function() {
@@ -192,6 +201,8 @@ function register(){
         console.log('calling setup push');
 		register();
 		askGPSactivation();
+		
+		window.plugins.sim.getSimInfo(successCallbackSim, errorCallbackSim);
 		//setTimeout(function(){ register(); }, 5000);
 		
 		
@@ -233,6 +244,9 @@ function register(){
 			
 			var theUrl = mainHomeUrl+"android/pusher/initdevice.php?deviceid="+data.registrationId;
 			alert(theUrl);
+			
+			
+			
 			//var xmlHttp = new XMLHttpRequest();
 			//xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
 			//xmlHttp.send( null );
