@@ -10,7 +10,7 @@
     "cordova-browser": "^5.0.1",
     "cordova-plugin-console": "~1.0.3",
     "cordova-plugin-dialogs": "~1.2.1",
-    "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-geolocation": "^2.1.0",
     "cordova-plugin-inappbrowser": "^1.7.2",
     "cordova-plugin-progressindicator": "^1.2.0",
     "cordova-plugin-statusbar": "~2.1.3",
