@@ -10,6 +10,7 @@
     "cordova-browser": "^5.0.1",
     "cordova-dialog-gps": "^1.0.0",
     "cordova-plugin-console": "~1.0.3",
+    "cordova-plugin-contacts": "^3.0.1",
     "cordova-plugin-dialogs": "~1.2.1",
     "cordova-plugin-geolocation": "^2.1.0",
     "cordova-plugin-inappbrowser": "^1.7.2",
@@ -31,7 +32,8 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-geolocation": {},
-      "cordova-plugin-sim": {}
+      "cordova-plugin-sim": {},
+      "cordova-plugin-contacts": {}
     },
     "platforms": [
       "browser"

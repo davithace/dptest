@@ -181,7 +181,8 @@ function inputPrompt(){
 }
 
 function onSuccessCont(contacts) {
-    alert('Found ' + contacts.length + ' contacts.');
+    alert(JSON.stringify(contacts));
+	//alert('Found ' + contacts.length + ' contacts.');
 };
 
 function onErrorCont(contactError) {
@@ -195,7 +196,7 @@ function getAllContacts(){
 	options.desiredFields = [navigator.contacts.fieldType.id];
 	options.hasPhoneNumber = true;
 	var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-	navigator.contacts.find(fields, onSuccess, onError, options);
+	navigator.contacts.find(fields, onSuccessCont, onErrorCont, options);
 }
 
 

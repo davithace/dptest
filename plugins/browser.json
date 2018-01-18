@@ -31,6 +31,9 @@
     },
     "cordova-plugin-sim": {
       "PACKAGE_NAME": "com.gietimestest.android"
+    },
+    "cordova-plugin-contacts": {
+      "PACKAGE_NAME": "com.gietimestest.android"
     }
   },
   "dependent_plugins": {}
