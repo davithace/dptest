@@ -1,4 +1,12 @@
 {
-  "name": "Push Demo",
-  "gcm_sender_id": "85075801930"
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "GieTimes",
+  "short_name": "GieTimes",
+  "version": "com.gietimes.app",
+  "description": "Gie-Times Online media smart generation",
+  "author": "gietimes author",
+  "icons": [],
+  "start_url": "index.html",
+  "theme_color": "#000000"
 }

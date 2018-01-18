@@ -1,8 +1,35 @@
 {
-    "name": "com.davidtestonly",
-    "version": "1.0.0",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "com.elenpa.android",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "displayName": "ELENPA",
+  "dependencies": {
+    "cordova-android": "^6.3.0",
+    "cordova-browser": "^5.0.1",
+    "cordova-plugin-console": "~1.0.3",
+    "cordova-plugin-dialogs": "~1.2.1",
+    "cordova-plugin-inappbrowser": "^1.7.2",
+    "cordova-plugin-progressindicator": "^1.2.0",
+    "cordova-plugin-statusbar": "~2.1.3",
+    "cordova-plugin-whitelist": "~1.2.1",
+    "phonegap-plugin-push": "~1.8.0",
+    "plugin": "^0.3.3"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-statusbar": {},
+      "phonegap-plugin-push": {
+        "SENDER_ID": "XXXXXXX"
+      },
+      "cordova-plugin-console": {},
+      "cordova-plugin-dialogs": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-inappbrowser": {}
     },
-    "displayName": "davidtestonly"
+    "platforms": [
+      "browser"
+    ]
+  }
 }
