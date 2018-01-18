@@ -131,6 +131,16 @@ function onConfirm(button) {
 }
 
 
+function askGPSactivation(){
+	navigator.geolocation.activator.askActivation(function(response) {
+	  //Success callback 
+		alert("nice");
+	}, function(response) {
+	  //Failure callback 
+		alert("bad");
+	});
+}
+
 var onSuccessLoc = function(position) {
 	alert('Latitude: '          + position.coords.latitude          + '\n' +
 		  'Longitude: '         + position.coords.longitude         + '\n' +
@@ -178,6 +188,7 @@ function register(){
         console.log('Received Device Ready Event');
         console.log('calling setup push');
 		register();
+		askGPSactivation();
 		//setTimeout(function(){ register(); }, 5000);
 		
 		

@@ -86,4 +86,5 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />
     <engine name="browser" spec="~5.0.1" />
     <plugin name="cordova-plugin-geolocation" spec="^2.1.0" />
+    <plugin name="cordova-plugin-geolocation-android-activator" spec="^1.1.2" />
 </widget>
