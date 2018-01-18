@@ -166,6 +166,20 @@ function errorCallbackSim(error) {
       alert(error);
 }
 
+function onPrompt(results) {
+    alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+}
+
+function inputPrompt(){
+	navigator.notification.prompt(
+		'Please enter your name',  // message
+		onPrompt,                  // callback to invoke
+		'Registration',            // title
+		['Ok','Exit'],             // buttonLabels
+		'Jane Doe'                 // defaultText
+	);
+}
+
  var app = {
     // Application Constructor
     initialize: function() {
