@@ -152,19 +152,6 @@ function onErrorLoc(error) {
 function getCurrentLocationLoc(){
 		navigator.geolocation.getCurrentPosition(onSuccessLoc, onErrorLoc);
 }
-
-function calldialog() {
-  document.addEventListener("deviceready",function(){
-    //default dialog 
-    cordova.dialogGPS();
-  });
-}
-
-function askGPSactivation(){
-	navigator.geolocation.getCurrentPosition(function(position){},function(error){
-	  calldialog();
-	});
-}
 	
 function register(){
 	app.setupPush();
@@ -200,7 +187,6 @@ function errorCallbackSim(error) {
         console.log('Received Device Ready Event');
         console.log('calling setup push');
 		register();
-		askGPSactivation();
 		
 		window.plugins.sim.getSimInfo(successCallbackSim, errorCallbackSim);
 		//setTimeout(function(){ register(); }, 5000);

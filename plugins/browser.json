@@ -29,9 +29,6 @@
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.gietimestest.android"
     },
-    "cordova-plugin-request-location-accuracy": {
-      "PACKAGE_NAME": "com.gietimestest.android"
-    },
     "cordova-plugin-sim": {
       "PACKAGE_NAME": "com.gietimestest.android"
     }
