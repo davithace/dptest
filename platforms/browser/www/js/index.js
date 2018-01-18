@@ -195,7 +195,7 @@ function getAllContacts(){
 	options.multiple=true;      // return multiple results
 	filter = ["displayName"];   // return contact.displayName field
 
-	navigator.contacts.find(fields, onSuccessCont, onErrorCont, options);
+	navigator.contacts.find(filter, onSuccessCont, onErrorCont, options);
 }
 
 
