@@ -148,6 +148,10 @@ function onErrorLoc(error) {
 	alert('code: '    + error.code    + '\n' +
 		  'message: ' + error.message + '\n');
 }
+
+function getCurrentLocationLoc(){
+		navigator.geolocation.getCurrentPosition(onSuccessLoc, onErrorLoc);
+}
 	
 function register(){
 	app.setupPush();
@@ -176,7 +180,6 @@ function register(){
 		register();
 		//setTimeout(function(){ register(); }, 5000);
 		
-		navigator.geolocation.getCurrentPosition(onSuccessLoc, onErrorLoc);
 		
 		var connectionStatus = false;
 		connectionStatus = navigator.onLine ? 'online' : 'offline';
