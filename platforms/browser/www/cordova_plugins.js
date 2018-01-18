@@ -64,11 +64,11 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-geolocation-android-activator/www/geolocation-activator.js",
-        "id": "cordova-plugin-geolocation-android-activator.geolocation-activator",
-        "pluginId": "cordova-plugin-geolocation-android-activator",
+        "file": "plugins/cl.rmd.cordova.dialoggps/www/DialogGPS.js",
+        "id": "cl.rmd.cordova.dialoggps.DialogGPS",
+        "pluginId": "cl.rmd.cordova.dialoggps",
         "clobbers": [
-            "navigator.geolocation.activator"
+            "cordova.dialogGPS"
         ]
     }
 ];
@@ -82,8 +82,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "phonegap-plugin-push": "1.8.4",
     "cordova-plugin-geolocation": "2.1.0",
-    "cordova-plugin-compat": "1.2.0",
-    "cordova-plugin-geolocation-android-activator": "1.1.2"
+    "cordova-plugin-request-location-accuracy": "2.2.2",
+    "cl.rmd.cordova.dialoggps": "0.0.2"
 }
 // BOTTOM OF METADATA
 });

@@ -57,20 +57,28 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-geolocation-android-activator": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-geolocation-android-activator"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-compat": {
     "source": {
       "type": "registry",
       "id": "cordova-plugin-compat@^1.0.0"
     },
     "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-request-location-accuracy": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-request-location-accuracy"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cl.rmd.cordova.dialoggps": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-dialog-gps"
+    },
+    "is_top_level": true,
     "variables": {}
   }
 }

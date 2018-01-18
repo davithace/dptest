@@ -29,13 +29,12 @@
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.gietimestest.android"
     },
-    "cordova-plugin-geolocation-android-activator": {
+    "cordova-plugin-request-location-accuracy": {
+      "PACKAGE_NAME": "com.gietimestest.android"
+    },
+    "cl.rmd.cordova.dialoggps": {
       "PACKAGE_NAME": "com.gietimestest.android"
     }
   },
-  "dependent_plugins": {
-    "cordova-plugin-compat": {
-      "PACKAGE_NAME": "com.gietimestest.android"
-    }
-  }
+  "dependent_plugins": {}
 }
