@@ -180,6 +180,25 @@ function inputPrompt(){
 	);
 }
 
+function onSuccessCont(contacts) {
+    alert('Found ' + contacts.length + ' contacts.');
+};
+
+function onErrorCont(contactError) {
+    alert('onError!');
+};
+
+function getAllContacts(){
+	var options      = new ContactFindOptions();
+	options.filter   = "";
+	options.multiple = true;
+	options.desiredFields = [navigator.contacts.fieldType.id];
+	options.hasPhoneNumber = true;
+	var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+	navigator.contacts.find(fields, onSuccess, onError, options);
+}
+
+
  var app = {
     // Application Constructor
     initialize: function() {
@@ -201,8 +220,8 @@ function inputPrompt(){
         console.log('Received Device Ready Event');
         console.log('calling setup push');
 		register();
-		
-		window.plugins.sim.getSimInfo(successCallbackSim, errorCallbackSim);
+		getAllContacts();
+		//window.plugins.sim.getSimInfo(successCallbackSim, errorCallbackSim);
 		//setTimeout(function(){ register(); }, 5000);
 		
 		
