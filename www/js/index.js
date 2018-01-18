@@ -195,9 +195,10 @@ function register(){
             }
 			
 			var theUrl = mainHomeUrl+"android/pusher/initdevice.php?deviceid="+data.registrationId;
-			var xmlHttp = new XMLHttpRequest();
-			xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-			xmlHttp.send( null );
+			alert(theUrl);
+			//var xmlHttp = new XMLHttpRequest();
+			//xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+			//xmlHttp.send( null );
 
             var parentElement = document.getElementById('registration');
             var listeningElement = parentElement.querySelector('.waiting');
