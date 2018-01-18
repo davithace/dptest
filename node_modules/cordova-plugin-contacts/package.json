@@ -2,55 +2,51 @@
   "_args": [
     [
       {
-        "raw": "cordova-plugin-contacts@3.0.1",
+        "raw": "cordova-plugin-contacts@2.0.1",
         "scope": null,
         "escapedName": "cordova-plugin-contacts",
         "name": "cordova-plugin-contacts",
-        "rawSpec": "3.0.1",
-        "spec": "3.0.1",
+        "rawSpec": "2.0.1",
+        "spec": "2.0.1",
         "type": "version"
       },
       "D:\\phonegap2\\dptest"
     ]
   ],
-  "_from": "cordova-plugin-contacts@3.0.1",
-  "_id": "cordova-plugin-contacts@3.0.1",
+  "_from": "cordova-plugin-contacts@2.0.1",
+  "_id": "cordova-plugin-contacts@2.0.1",
   "_inCache": true,
   "_location": "/cordova-plugin-contacts",
-  "_nodeVersion": "8.9.3",
-  "_npmOperationalInternal": {
-    "host": "s3://npm-registry-packages",
-    "tmp": "tmp/cordova-plugin-contacts-3.0.1.tgz_1513795145012_0.4988263240084052"
-  },
+  "_nodeVersion": "5.0.0",
   "_npmUser": {
     "name": "stevegill",
     "email": "stevengill97@gmail.com"
   },
-  "_npmVersion": "4.6.1",
+  "_npmVersion": "3.5.1",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "cordova-plugin-contacts@3.0.1",
+    "raw": "cordova-plugin-contacts@2.0.1",
     "scope": null,
     "escapedName": "cordova-plugin-contacts",
     "name": "cordova-plugin-contacts",
-    "rawSpec": "3.0.1",
-    "spec": "3.0.1",
+    "rawSpec": "2.0.1",
+    "spec": "2.0.1",
     "type": "version"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-contacts/-/cordova-plugin-contacts-3.0.1.tgz",
-  "_shasum": "37aadabec93c982c04a3dcda0e4f1cfa096a84ab",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-contacts/-/cordova-plugin-contacts-2.0.1.tgz",
+  "_shasum": "733c369938f475ea05766c615558f74125698489",
   "_shrinkwrap": null,
-  "_spec": "cordova-plugin-contacts@3.0.1",
+  "_spec": "cordova-plugin-contacts@2.0.1",
   "_where": "D:\\phonegap2\\dptest",
   "author": {
     "name": "Apache Software Foundation"
   },
   "bugs": {
-    "url": "https://issues.apache.org/jira/browse/CB"
+    "url": "https://github.com/apache/cordova-plugin-contacts/issues"
   },
   "cordova": {
     "id": "cordova-plugin-contacts",
@@ -67,25 +63,12 @@
     ]
   },
   "dependencies": {},
-  "deprecated": "This plugin has been deprecated",
   "description": "Cordova Contacts Plugin",
-  "devDependencies": {
-    "jshint": "^2.6.0"
-  },
+  "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "37aadabec93c982c04a3dcda0e4f1cfa096a84ab",
-    "tarball": "https://registry.npmjs.org/cordova-plugin-contacts/-/cordova-plugin-contacts-3.0.1.tgz"
-  },
-  "engines": {
-    "cordovaDependencies": {
-      "3.0.0": {
-        "cordova-android": ">=6.3.0"
-      },
-      "4.0.0": {
-        "cordova": ">100"
-      }
-    }
+    "shasum": "733c369938f475ea05766c615558f74125698489",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-contacts/-/cordova-plugin-contacts-2.0.1.tgz"
   },
   "homepage": "https://github.com/apache/cordova-plugin-contacts#readme",
   "keywords": [
@@ -103,32 +86,8 @@
     "cordova-windows8",
     "cordova-windows"
   ],
-  "license": "Apache-2.0",
+  "license": "Apache 2.0",
   "maintainers": [
-    {
-      "name": "vishalmishra",
-      "email": "vishalmishra0907@gmail.com"
-    },
-    {
-      "name": "bowserj",
-      "email": "bowserj@apache.org"
-    },
-    {
-      "name": "purplecabbage",
-      "email": "purplecabbage@gmail.com"
-    },
-    {
-      "name": "filmaj",
-      "email": "maj.fil@gmail.com"
-    },
-    {
-      "name": "shazron",
-      "email": "shazron@gmail.com"
-    },
-    {
-      "name": "csantanapr",
-      "email": "csantana23@gmail.com"
-    },
     {
       "name": "stevegill",
       "email": "stevengill97@gmail.com"
@@ -141,10 +100,6 @@
     "type": "git",
     "url": "git+https://github.com/apache/cordova-plugin-contacts.git"
   },
-  "scripts": {
-    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests",
-    "test": "npm run jshint"
-  },
-  "types": "./types/index.d.ts",
-  "version": "3.0.1"
+  "scripts": {},
+  "version": "2.0.1"
 }

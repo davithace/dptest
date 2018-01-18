@@ -88,11 +88,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-contacts/www/convertUtils.js",
-        "id": "cordova-plugin-contacts.convertUtils",
-        "pluginId": "cordova-plugin-contacts"
-    },
-    {
         "file": "plugins/cordova-plugin-contacts/www/ContactAddress.js",
         "id": "cordova-plugin-contacts.ContactAddress",
         "pluginId": "cordova-plugin-contacts",
@@ -147,14 +142,6 @@ module.exports = [
         "merges": [
             ""
         ]
-    },
-    {
-        "file": "plugins/cordova-plugin-contacts/src/browser/ContactsProxy.js",
-        "id": "cordova-plugin-contacts.ContactsProxy",
-        "pluginId": "cordova-plugin-contacts",
-        "merges": [
-            "navigator.contacts"
-        ]
     }
 ];
 module.exports.metadata = 
@@ -168,7 +155,7 @@ module.exports.metadata =
     "phonegap-plugin-push": "1.8.4",
     "cordova-plugin-geolocation": "2.1.0",
     "cordova-plugin-sim": "1.3.3",
-    "cordova-plugin-contacts": "3.0.1"
+    "cordova-plugin-contacts": "2.0.1"
 }
 // BOTTOM OF METADATA
 });

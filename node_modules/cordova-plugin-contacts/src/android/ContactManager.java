@@ -21,8 +21,6 @@ package org.apache.cordova.contacts;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaActivity;
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.LOG;
-import org.apache.cordova.PermissionHelper;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +35,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.RawContacts;
+import android.util.Log;
 
 import java.lang.reflect.Method;
 
@@ -188,7 +187,7 @@ public class ContactManager extends CordovaPlugin {
                     try {
                         res = contactAccessor.getContactById(id);
                     } catch (JSONException e) {
-                        LOG.e(LOG_TAG, "JSON fail.", e);
+                        Log.e(LOG_TAG, "JSON fail.", e);
                     }
                 }
                 if (res != null) {
@@ -255,7 +254,7 @@ public class ContactManager extends CordovaPlugin {
                     this.callbackContext.success(contact);
                     return;
                 } catch (JSONException e) {
-                    LOG.e(LOG_TAG, "JSON fail.", e);
+                    Log.e(LOG_TAG, "JSON fail.", e);
                 }
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 callbackContext.error(OPERATION_CANCELLED_ERROR);
