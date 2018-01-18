@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "cordova-dialog-gps",
+        "raw": "cordova-dialog-gps@^1.0.0",
         "scope": null,
         "escapedName": "cordova-dialog-gps",
         "name": "cordova-dialog-gps",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
+        "rawSpec": "^1.0.0",
+        "spec": ">=1.0.0 <2.0.0",
+        "type": "range"
       },
       "D:\\phonegap2\\dptest"
     ]
   ],
-  "_from": "cordova-dialog-gps@latest",
+  "_from": "cordova-dialog-gps@>=1.0.0 <2.0.0",
   "_id": "cordova-dialog-gps@1.0.0",
   "_inCache": true,
   "_location": "/cordova-dialog-gps",
@@ -29,13 +29,13 @@
   "_npmVersion": "3.8.9",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "cordova-dialog-gps",
+    "raw": "cordova-dialog-gps@^1.0.0",
     "scope": null,
     "escapedName": "cordova-dialog-gps",
     "name": "cordova-dialog-gps",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "rawSpec": "^1.0.0",
+    "spec": ">=1.0.0 <2.0.0",
+    "type": "range"
   },
   "_requiredBy": [
     "#USER",
@@ -44,7 +44,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-dialog-gps/-/cordova-dialog-gps-1.0.0.tgz",
   "_shasum": "a2f5c50c0e814c2e16d138d6b3319c4908172005",
   "_shrinkwrap": null,
-  "_spec": "cordova-dialog-gps",
+  "_spec": "cordova-dialog-gps@^1.0.0",
   "_where": "D:\\phonegap2\\dptest",
   "author": {
     "name": "rudibr78",
