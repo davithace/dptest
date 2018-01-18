@@ -25,6 +25,9 @@
     "phonegap-plugin-push": {
       "SENDER_ID": "XXXXXXX",
       "PACKAGE_NAME": "com.cashkredit.android"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.gietimestest.android"
     }
   },
   "dependent_plugins": {}
