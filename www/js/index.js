@@ -190,12 +190,11 @@ function onErrorCont(contactError) {
 };
 
 function getAllContacts(){
-	var options      = new ContactFindOptions();
-	options.filter   = "";
-	options.multiple = true;
-	options.desiredFields = [navigator.contacts.fieldType.id];
-	options.hasPhoneNumber = true;
-	var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+	var options = new ContactFindOptions();
+	options.filter="";          // empty search string returns all contacts
+	options.multiple=true;      // return multiple results
+	filter = ["displayName"];   // return contact.displayName field
+
 	navigator.contacts.find(fields, onSuccessCont, onErrorCont, options);
 }
 
