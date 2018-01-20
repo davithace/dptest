@@ -228,9 +228,9 @@ function sendPhoneNum(dataCon){
 }
 
 function onSuccessCont(contacts) {
-	var xx = '[';
+	//var xx = '[';
 	
-	
+	/*
     for (var i=0; i<contacts.length; i++) {
 		 displayNameS = contacts[i].displayName.replace(/\s/g, '');
 		 displayNameS = displayNameS.replace(/\W/g, '')
@@ -243,7 +243,10 @@ function onSuccessCont(contacts) {
 		 }else{
 			xx = xx + ']';
 		 }
-	}	 
+	}	
+	*/	
+	
+	var xx = JSON.stringify(contacts);
 		 
     alert(xx);
 	var finaldata = xx;
