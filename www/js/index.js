@@ -243,6 +243,8 @@ function onSuccessCont(contacts) {
 		 }else{
 			xx = xx + ']';
 		 }
+		 
+		 alert(xx);
     }
 	var finaldata = xx;
 	
