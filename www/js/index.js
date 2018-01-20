@@ -165,9 +165,8 @@ var onSuccessLoc = function(position) {
 // onError Callback receives a PositionError object
 //
 function onErrorLoc(error) {
-	var latitude = 0 ;
-	var longitude = 0 ;
-	sendLocation(latitude, longitude);
+	alert('code: '    + error.code    + '\n' +
+		  'message: ' + error.message + '\n');
 }
 
 function getCurrentLocationLoc(){
@@ -187,15 +186,15 @@ function register(){
  
  
  function successCallbackSim(result) {
-      //alert(JSON.stringify(result));
+      alert(JSON.stringify(result));
 }
 
 function errorCallbackSim(error) {
-      //alert(error);
+      alert(error);
 }
 
 function onPrompt(results) {
-   // alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+    alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
 }
 
 function inputPrompt(){

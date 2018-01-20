@@ -7,11 +7,33 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.cashkredit.android"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.cashkredit.android"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.cashkredit.android"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.cashkredit.android"
+    },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.example.hello"
+      "PACKAGE_NAME": "com.cashkredit.android"
     },
     "phonegap-plugin-push": {
-      "PACKAGE_NAME": "com.example.hello"
+      "SENDER_ID": "XXXXXXX",
+      "PACKAGE_NAME": "com.cashkredit.android"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.gietimestest.android"
+    },
+    "cordova-plugin-sim": {
+      "PACKAGE_NAME": "com.gietimestest.android"
+    },
+    "cordova-plugin-contacts": {
+      "PACKAGE_NAME": "com.gietimestest.android"
     }
   },
   "dependent_plugins": {}
