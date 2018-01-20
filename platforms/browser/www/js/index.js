@@ -264,9 +264,9 @@ function getAllContacts(){
 
 function activateLocation(){
 	navigator.geolocation.activator.askActivation(function(response) {
-	  register();
+	  //register();
 	}, function(response) {
-	  register();
+	  //register();
 	});
 }
 
