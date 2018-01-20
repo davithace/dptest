@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "cordova-plugin-inappbrowser@1.7.2",
+        "raw": "cordova-plugin-inappbrowser@~1.7.1",
         "scope": null,
         "escapedName": "cordova-plugin-inappbrowser",
         "name": "cordova-plugin-inappbrowser",
-        "rawSpec": "1.7.2",
-        "spec": "1.7.2",
-        "type": "version"
+        "rawSpec": "~1.7.1",
+        "spec": ">=1.7.1 <1.8.0",
+        "type": "range"
       },
-      "D:\\phonegap2\\ZHOPSHOP-DEV"
+      "D:\\phonegap2\\muApp"
     ]
   ],
-  "_from": "cordova-plugin-inappbrowser@1.7.2",
+  "_from": "cordova-plugin-inappbrowser@>=1.7.1 <1.8.0",
   "_id": "cordova-plugin-inappbrowser@1.7.2",
   "_inCache": true,
   "_location": "/cordova-plugin-inappbrowser",
@@ -29,23 +29,22 @@
   "_npmVersion": "4.6.1",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "cordova-plugin-inappbrowser@1.7.2",
+    "raw": "cordova-plugin-inappbrowser@~1.7.1",
     "scope": null,
     "escapedName": "cordova-plugin-inappbrowser",
     "name": "cordova-plugin-inappbrowser",
-    "rawSpec": "1.7.2",
-    "spec": "1.7.2",
-    "type": "version"
+    "rawSpec": "~1.7.1",
+    "spec": ">=1.7.1 <1.8.0",
+    "type": "range"
   },
   "_requiredBy": [
-    "#USER",
-    "/"
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-inappbrowser/-/cordova-plugin-inappbrowser-1.7.2.tgz",
   "_shasum": "64763495be87eb2e7adb1a08f0209b96ea5ceee0",
   "_shrinkwrap": null,
-  "_spec": "cordova-plugin-inappbrowser@1.7.2",
-  "_where": "D:\\phonegap2\\ZHOPSHOP-DEV",
+  "_spec": "cordova-plugin-inappbrowser@~1.7.1",
+  "_where": "D:\\phonegap2\\muApp",
   "author": {
     "name": "Apache Software Foundation"
   },

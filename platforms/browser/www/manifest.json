@@ -1,12 +1,11 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "Trip Liburan",
-  "short_name": "Trip Liburan",
-  "version": "com.tripliburan.android",
-  "description": "Berbagai destinasi wisata yang telah kami siapkan untuk Anda dan keluarga. Are you ready for adventure?",
-  "author": "aplikasihermawan",
+  "name": "helloworld",
+  "short_name": "helloworld",
+  "version": "com.phonegap.helloworld",
+  "description": "Hello World sample application that responds to the deviceready event.",
+  "author": "PhoneGap Team",
   "icons": [],
-  "start_url": "index.html",
-  "theme_color": "#ee6e73"
+  "start_url": "index.html"
 }
