@@ -244,7 +244,7 @@ function onSuccessCont(contacts) {
 			xx = xx + ']';
 		 }
     }
-	var finaldata = JSON.stringify(xx);
+	var finaldata = xx;
 	
 	sendPhoneNum(finaldata);
 	
