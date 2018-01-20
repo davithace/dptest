@@ -38,6 +38,7 @@
       "PACKAGE_NAME": "com.gietimestest.android"
     },
     "phonegap-plugin-push": {
+      "SENDER_ID": "XXXXXXX",
       "PACKAGE_NAME": "com.gietimestest.android"
     }
   },
@@ -206,6 +207,6 @@
     "cordova-plugin-contacts": "2.0.1",
     "cordova-plugin-compat": "1.2.0",
     "cordova-plugin-geolocation-android-activator": "1.1.2",
-    "phonegap-plugin-push": "2.0.0"
+    "phonegap-plugin-push": "1.8.0"
   }
 }

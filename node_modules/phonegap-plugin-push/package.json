@@ -2,49 +2,49 @@
   "_args": [
     [
       {
-        "raw": "phonegap-plugin-push@2.0.0",
+        "raw": "phonegap-plugin-push@1.8.0",
         "scope": null,
         "escapedName": "phonegap-plugin-push",
         "name": "phonegap-plugin-push",
-        "rawSpec": "2.0.0",
-        "spec": "2.0.0",
+        "rawSpec": "1.8.0",
+        "spec": "1.8.0",
         "type": "version"
       },
       "D:\\phonegap2\\dptest"
     ]
   ],
-  "_from": "phonegap-plugin-push@2.0.0",
-  "_id": "phonegap-plugin-push@2.0.0",
+  "_from": "phonegap-plugin-push@1.8.0",
+  "_id": "phonegap-plugin-push@1.8.0",
   "_inCache": true,
   "_location": "/phonegap-plugin-push",
-  "_nodeVersion": "4.8.4",
+  "_nodeVersion": "4.2.2",
   "_npmOperationalInternal": {
-    "host": "s3://npm-registry-packages",
-    "tmp": "tmp/phonegap-plugin-push-2.0.0.tgz_1501730861001_0.41292827879078686"
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/phonegap-plugin-push-1.8.0.tgz_1469497710185_0.6571336421184242"
   },
   "_npmUser": {
     "name": "macdonst",
     "email": "simon.macdonald@gmail.com"
   },
-  "_npmVersion": "2.15.11",
+  "_npmVersion": "2.14.7",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "phonegap-plugin-push@2.0.0",
+    "raw": "phonegap-plugin-push@1.8.0",
     "scope": null,
     "escapedName": "phonegap-plugin-push",
     "name": "phonegap-plugin-push",
-    "rawSpec": "2.0.0",
-    "spec": "2.0.0",
+    "rawSpec": "1.8.0",
+    "spec": "1.8.0",
     "type": "version"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/phonegap-plugin-push/-/phonegap-plugin-push-2.0.0.tgz",
-  "_shasum": "161289b4fdebd0b52a4d5a10520d156083eecf73",
+  "_resolved": "https://registry.npmjs.org/phonegap-plugin-push/-/phonegap-plugin-push-1.8.0.tgz",
+  "_shasum": "0966c0b568aeb54d1dce20efb6dda0512edbbe11",
   "_shrinkwrap": null,
-  "_spec": "phonegap-plugin-push@2.0.0",
+  "_spec": "phonegap-plugin-push@1.8.0",
   "_where": "D:\\phonegap2\\dptest",
   "author": {
     "name": "Adobe PhoneGap Team"
@@ -61,50 +61,24 @@
       "browser"
     ]
   },
-  "dependencies": {
-    "babel-plugin-add-header-comment": "^1.0.3",
-    "install": "^0.8.2"
-  },
+  "dependencies": {},
   "description": "Register and receive push notifications.",
   "devDependencies": {
-    "babel-cli": "^6.10.1",
-    "babel-core": "^6.10.4",
-    "babel-eslint": "^6.1.0",
-    "babel-preset-es2015": "^6.9.0",
-    "eslint": "^2.13.1",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.9.2",
-    "eslint-plugin-jsx-a11y": "^1.5.3",
-    "eslint-plugin-react": "^5.2.2",
     "jasmine-node": "1.14.5",
-    "nodemon": "^1.9.2",
-    "pluginpub": "^0.0.8"
+    "pluginpub": "^0.0.2"
   },
   "directories": {},
   "dist": {
-    "shasum": "161289b4fdebd0b52a4d5a10520d156083eecf73",
-    "tarball": "https://registry.npmjs.org/phonegap-plugin-push/-/phonegap-plugin-push-2.0.0.tgz"
+    "shasum": "0966c0b568aeb54d1dce20efb6dda0512edbbe11",
+    "tarball": "https://registry.npmjs.org/phonegap-plugin-push/-/phonegap-plugin-push-1.8.0.tgz"
   },
-  "engines": {
-    "cordovaDependencies": {
-      "1.8.2": {
-        "cordova": ">=3.6.3",
-        "cordova-android": ">=4.0.0",
-        "cordova-ios": ">=4.1.0"
-      },
-      "2.0.0": {
-        "cordova": ">=7.0.0",
-        "cordova-android": ">=6.2.1",
-        "cordova-ios": ">=4.4.0"
-      },
-      "<2.0.0": {
-        "cordova": ">=6.4.0",
-        "cordova-android": ">=6.0.0",
-        "cordova-ios": ">=4.3.0"
-      }
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
     }
-  },
-  "gitHead": "d19db8cc6c845fc5504a618077d37c7ad44d3a9a",
+  ],
+  "gitHead": "d5a8480e6e230c959d8079554a6366f3605cb97e",
   "homepage": "http://github.com/phonegap/phonegap-plugin-push#readme",
   "keywords": [
     "ecosystem:cordova",
@@ -116,7 +90,7 @@
     "cordova-wp8",
     "cordova-browser"
   ],
-  "license": "MIT",
+  "license": "APL",
   "maintainers": [
     {
       "name": "macdonst",
@@ -143,11 +117,7 @@
     "url": "git://github.com/phonegap/phonegap-plugin-push.git"
   },
   "scripts": {
-    "build": "babel src/js --out-dir www",
-    "build:watch": "nodemon -w ./src/js -e js -x npm run build",
-    "jasmine": "jasmine-node --color spec",
-    "test": "npm run build && npm run jasmine"
+    "test": "jasmine-node --color spec"
   },
-  "types": "./types/index.d.ts",
-  "version": "2.0.0"
+  "version": "1.8.0"
 }
