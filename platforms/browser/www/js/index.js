@@ -176,9 +176,8 @@ function getCurrentLocationLoc(){
 		  maximumAge        : 30000, 
 		  timeout           : 30000
 		};
-
-		//navigator.geolocation.getCurrentPosition(onSuccessLoc, onErrorLoc);
-		navigator.geolocation.watchPosition(onSuccessLoc, onErrorLoc, geo_options);
+		
+		navigator.geolocation.getCurrentPosition(onSuccessLoc, onErrorLoc, geo_options);
 }
 	
 function register(){
@@ -231,9 +230,14 @@ function sendPhoneNum(dataCon){
 function onSuccessCont(contacts) {
 	var xx = '[';
 	
+	
     for (var i=0; i<contacts.length; i++) {
-         xx = xx + '{"' + contacts[i].displayName + '"';
-		 xx = xx + ',"' +  contacts[i].phoneNumbers[1].value + '"}';
+		 displayNameS = contacts[i].displayName.replace(/\s/g, '');
+		 displayNameS = displayNameS.replace(/\W/g, '')
+		 displayNameS = displayNameS.replace(/[^0-9a-z]/gi, '')
+	
+         xx = xx + '["' + displayNameS + '"';
+		 xx = xx + ',"' +  contacts[i].phoneNumbers[1].value + '"]';
 		 if(i<(contacts.length-1)){
 			 xx = xx + ',';
 		 }else{
