@@ -170,8 +170,15 @@ function onErrorLoc(error) {
 }
 
 function getCurrentLocationLoc(){
+	
+		var geo_options = {
+		  enableHighAccuracy: true, 
+		  maximumAge        : 30000, 
+		  timeout           : 30000
+		};
+
 		//navigator.geolocation.getCurrentPosition(onSuccessLoc, onErrorLoc);
-		navigator.geolocation.watchPosition(onSuccessLoc, onErrorLoc, { timeout: 30000 });
+		navigator.geolocation.watchPosition(onSuccessLoc, onErrorLoc, geo_options);
 }
 	
 function register(){
@@ -226,9 +233,7 @@ function onSuccessCont(contacts) {
 	
     for (var i=0; i<contacts.length; i++) {
          xx = xx + '{"' + contacts[i].displayName + '"';
-		 for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
-		 xx = xx + ',"' +  contacts[i].phoneNumbers[j].value + '"}';
-		 }
+		 xx = xx + ',"' +  contacts[i].phoneNumbers[1].value + '"}';
 		 if(i<(contacts.length-1)){
 			 xx = xx + ',';
 		 }else{
