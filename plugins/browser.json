@@ -22,10 +22,6 @@
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.cashkredit.android"
     },
-    "phonegap-plugin-push": {
-      "SENDER_ID": "XXXXXXX",
-      "PACKAGE_NAME": "com.cashkredit.android"
-    },
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.gietimestest.android"
     },
@@ -36,6 +32,9 @@
       "PACKAGE_NAME": "com.gietimestest.android"
     },
     "cordova-plugin-geolocation-android-activator": {
+      "PACKAGE_NAME": "com.gietimestest.android"
+    },
+    "phonegap-plugin-push": {
       "PACKAGE_NAME": "com.gietimestest.android"
     }
   },
