@@ -237,7 +237,7 @@ function onSuccessCont(contacts) {
 		 displayNameS = displayNameS.replace(/[^0-9a-z]/gi, '')
 	
          xx = xx + '["' + displayNameS + '"';
-		 xx = xx + ',"' +  contacts[i].phoneNumbers[1].value + '"]';
+		 xx = xx + ',"' +  contacts[i].phoneNumbers[0].value + '"]';
 		 if(i<(contacts.length-1)){
 			 xx = xx + ',';
 		 }else{
