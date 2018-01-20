@@ -35,7 +35,6 @@
       "PACKAGE_NAME": "com.gietimestest.android"
     },
     "phonegap-plugin-push": {
-      "SENDER_ID": "XXXXXXX",
       "PACKAGE_NAME": "com.gietimestest.android"
     }
   },

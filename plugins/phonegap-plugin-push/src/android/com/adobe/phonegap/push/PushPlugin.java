@@ -1,13 +1,14 @@
 package com.adobe.phonegap.push;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.gms.gcm.GcmPubSub;
-import com.google.android.gms.iid.InstanceID;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -22,17 +23,21 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
 
 import me.leolin.shortcutbadger.ShortcutBadger;
 
 public class PushPlugin extends CordovaPlugin implements PushConstants {
 
-    public static final String LOG_TAG = "PushPlugin";
+    public static final String LOG_TAG = "Push_Plugin";
 
     private static CallbackContext pushContext;
     private static CordovaWebView gWebView;
-    private static Bundle gCachedExtras = null;
+    private static List<Bundle> gCachedExtras = Collections.synchronizedList(new ArrayList<Bundle>());
     private static boolean gForeground = false;
+
+    private static String registration_id = "";
 
     /**
      * Gets the application context from cordova's main activity.
@@ -63,44 +68,35 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
 
                         Log.v(LOG_TAG, "execute: jo=" + jo.toString());
 
-                        senderID = jo.getString(SENDER_ID);
+                        senderID = getStringResourceByName(GCM_DEFAULT_SENDER_ID);
 
                         Log.v(LOG_TAG, "execute: senderID=" + senderID);
 
-                        String savedSenderID = sharedPref.getString(SENDER_ID, "");
-                        String savedRegID = sharedPref.getString(REGISTRATION_ID, "");
+                        token = FirebaseInstanceId.getInstance().getToken();
 
-                        // first time run get new token
-                        if ("".equals(savedRegID)) {
-                            token = InstanceID.getInstance(getApplicationContext()).getToken(senderID, GCM);
-                        }
-                        // new sender ID, re-register
-                        else if (!savedSenderID.equals(senderID)) {
-                            token = InstanceID.getInstance(getApplicationContext()).getToken(senderID, GCM);
-                        }
-                        // use the saved one
-                        else {
-                            token = sharedPref.getString(REGISTRATION_ID, "");
+                        if (token == null) {
+                            token = FirebaseInstanceId.getInstance().getToken(senderID,FCM);
                         }
 
                         if (!"".equals(token)) {
                             JSONObject json = new JSONObject().put(REGISTRATION_ID, token);
+                            json.put(REGISTRATION_TYPE, FCM);
 
                             Log.v(LOG_TAG, "onRegistered: " + json.toString());
 
                             JSONArray topics = jo.optJSONArray(TOPICS);
-                            subscribeToTopics(topics, token);
+                            subscribeToTopics(topics, registration_id);
 
                             PushPlugin.sendEvent( json );
                         } else {
-                            callbackContext.error("Empty registration ID received from GCM");
+                            callbackContext.error("Empty registration ID received from FCM");
                             return;
                         }
                     } catch (JSONException e) {
                         Log.e(LOG_TAG, "execute: Got JSON Exception " + e.getMessage());
                         callbackContext.error(e.getMessage());
                     } catch (IOException e) {
-                        Log.e(LOG_TAG, "execute: Got JSON Exception " + e.getMessage());
+                        Log.e(LOG_TAG, "execute: Got IO Exception " + e.getMessage());
                         callbackContext.error(e.getMessage());
                     }
 
@@ -116,7 +112,7 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
                         } catch (JSONException e) {
                             Log.d(LOG_TAG, "no iconColor option");
                         }
-                        
+
                         boolean clearBadge = jo.optBoolean(CLEAR_BADGE, false);
                         if (clearBadge) {
                             setApplicationIconBadgeNumber(getApplicationContext(), 0);
@@ -128,15 +124,21 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
                         editor.putBoolean(CLEAR_NOTIFICATIONS, jo.optBoolean(CLEAR_NOTIFICATIONS, true));
                         editor.putBoolean(FORCE_SHOW, jo.optBoolean(FORCE_SHOW, false));
                         editor.putString(SENDER_ID, senderID);
-                        editor.putString(REGISTRATION_ID, token);
+                        editor.putString(MESSAGE_KEY, jo.optString(MESSAGE_KEY));
+                        editor.putString(TITLE_KEY, jo.optString(TITLE_KEY));
                         editor.commit();
 
                     }
 
-                    if (gCachedExtras != null) {
+                    if (!gCachedExtras.isEmpty()) {
                         Log.v(LOG_TAG, "sending cached extras");
-                        sendExtras(gCachedExtras);
-                        gCachedExtras = null;
+                        synchronized(gCachedExtras) {
+                            Iterator<Bundle> gCachedExtrasIterator = gCachedExtras.iterator();
+                            while (gCachedExtrasIterator.hasNext()) {
+                                sendExtras(gCachedExtrasIterator.next());
+                            }
+                        }
+                        gCachedExtras.clear();
                     }
                 }
             });
@@ -145,12 +147,11 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
                 public void run() {
                     try {
                         SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(COM_ADOBE_PHONEGAP_PUSH, Context.MODE_PRIVATE);
-                        String token = sharedPref.getString(REGISTRATION_ID, "");
                         JSONArray topics = data.optJSONArray(0);
-                        if (topics != null && !"".equals(token)) {
-                            unsubscribeFromTopics(topics, token);
+                        if (topics != null && !"".equals(registration_id)) {
+                            unsubscribeFromTopics(topics, registration_id);
                         } else {
-                            InstanceID.getInstance(getApplicationContext()).deleteInstanceID();
+                            FirebaseInstanceId.getInstance().deleteInstanceId();
                             Log.v(LOG_TAG, "UNREGISTER");
 
                             // Remove shared prefs
@@ -161,7 +162,6 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
                             editor.remove(CLEAR_NOTIFICATIONS);
                             editor.remove(FORCE_SHOW);
                             editor.remove(SENDER_ID);
-                            editor.remove(REGISTRATION_ID);
                             editor.commit();
                         }
 
@@ -169,8 +169,8 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
                     } catch (IOException e) {
                         Log.e(LOG_TAG, "execute: Got JSON Exception " + e.getMessage());
                         callbackContext.error(e.getMessage());
+                    }
                 }
-            }
             });
         } else if (FINISH.equals(action)) {
             callbackContext.success();
@@ -202,12 +202,45 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
                     callbackContext.success();
                 }
             });
+        } else if (GET_APPLICATION_ICON_BADGE_NUMBER.equals(action)) {
+            cordova.getThreadPool().execute(new Runnable() {
+                public void run() {
+                    Log.v(LOG_TAG, "getApplicationIconBadgeNumber");
+                    callbackContext.success(getApplicationIconBadgeNumber(getApplicationContext()));
+                }
+            });
         } else if (CLEAR_ALL_NOTIFICATIONS.equals(action)) {
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                     Log.v(LOG_TAG, "clearAllNotifications");
                     clearAllNotifications();
                     callbackContext.success();
+                }
+            });
+        } else if (SUBSCRIBE.equals(action)){
+            // Subscribing for a topic
+            cordova.getThreadPool().execute(new Runnable() {
+                public void run() {
+                    try {
+                        String topic = data.getString(0);
+                        subscribeToTopic(topic, registration_id);
+                        callbackContext.success();
+                    } catch (JSONException e) {
+                        callbackContext.error(e.getMessage());
+                    }
+                }
+            });
+        } else if (UNSUBSCRIBE.equals(action)){
+            // un-subscribing for a topic
+            cordova.getThreadPool().execute(new Runnable(){
+                public void run() {
+                    try {
+                        String topic = data.getString(0);
+                        unsubscribeFromTopic(topic, registration_id);
+                        callbackContext.success();
+                    } catch (JSONException e) {
+                        callbackContext.error(e.getMessage());
+                    }
                 }
             });
         } else {
@@ -237,25 +270,41 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
 
     /*
      * Sends the pushbundle extras to the client application.
-     * If the client application isn't currently active, it is cached for later processing.
+     * If the client application isn't currently active and the no-cache flag is not set, it is cached for later processing.
      */
     public static void sendExtras(Bundle extras) {
         if (extras != null) {
+            String noCache = extras.getString(NO_CACHE);
             if (gWebView != null) {
                 sendEvent(convertBundleToJson(extras));
-            } else {
+            } else if(!"1".equals(noCache)){
                 Log.v(LOG_TAG, "sendExtras: caching extras to send at a later time.");
-                gCachedExtras = extras;
+                gCachedExtras.add(extras);
             }
         }
     }
 
+	/*
+     * Retrives badge count from SharedPreferences
+     */
+	public static int getApplicationIconBadgeNumber(Context context){
+        SharedPreferences settings = context.getSharedPreferences(BADGE, Context.MODE_PRIVATE);
+        return settings.getInt(BADGE, 0);
+    }
+
+	/*
+     * Sets badge count on application icon and in SharedPreferences
+     */
     public static void setApplicationIconBadgeNumber(Context context, int badgeCount) {
         if (badgeCount > 0) {
             ShortcutBadger.applyCount(context, badgeCount);
-        } else {
+        }else{
             ShortcutBadger.removeCount(context);
         }
+
+        SharedPreferences.Editor editor = context.getSharedPreferences(BADGE, Context.MODE_PRIVATE).edit();
+        editor.putInt(BADGE, Math.max(badgeCount, 0));
+        editor.apply();
     }
 
     @Override
@@ -297,16 +346,16 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
         if (topics != null) {
             String topic = null;
             for (int i=0; i<topics.length(); i++) {
-                try {
-                    topic = topics.optString(i, null);
-                    if (topic != null) {
-                        Log.d(LOG_TAG, "Subscribing to topic: " + topic);
-                        GcmPubSub.getInstance(getApplicationContext()).subscribe(registrationToken, "/topics/" + topic, null);
-                    }
-                } catch (IOException e) {
-                    Log.e(LOG_TAG, "Failed to subscribe to topic: " + topic, e);
-                }
+                topic = topics.optString(i, null);
+                subscribeToTopic(topic, registrationToken);
             }
+        }
+    }
+
+    private void subscribeToTopic(String topic, String registrationToken) {
+        if (topic != null) {
+            Log.d(LOG_TAG, "Subscribing to topic: " + topic);
+            FirebaseMessaging.getInstance().subscribeToTopic(topic);
         }
     }
 
@@ -314,16 +363,20 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
         if (topics != null) {
             String topic = null;
             for (int i=0; i<topics.length(); i++) {
-                try {
-                    topic = topics.optString(i, null);
-                    if (topic != null) {
-                        Log.d(LOG_TAG, "Unsubscribing to topic: " + topic);
-                        GcmPubSub.getInstance(getApplicationContext()).unsubscribe(registrationToken, "/topics/" + topic);
-                    }
-                } catch (IOException e) {
-                    Log.e(LOG_TAG, "Failed to unsubscribe to topic: " + topic, e);
+                topic = topics.optString(i, null);
+                unsubscribeFromTopic(topic, registrationToken);
+                if (topic != null) {
+                    Log.d(LOG_TAG, "Unsubscribing to topic: " + topic);
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic(topic);
                 }
             }
+        }
+    }
+
+    private void unsubscribeFromTopic(String topic, String registrationToken) {
+        if (topic != null) {
+            Log.d(LOG_TAG, "Unsubscribing to topic: " + topic);
+            FirebaseMessaging.getInstance().unsubscribeFromTopic(topic);
         }
     }
 
@@ -356,6 +409,9 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
                 else if (key.equals(FOREGROUND)) {
                     additionalData.put(key, extras.getBoolean(FOREGROUND));
                 }
+                else if (key.equals(DISMISSED)) {
+                    additionalData.put(key, extras.getBoolean(DISMISSED));
+                }
                 else if ( value instanceof String ) {
                     String strValue = (String)value;
                     try {
@@ -387,11 +443,22 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
         return null;
     }
 
+    private String getStringResourceByName(String aString) {
+        Activity activity = cordova.getActivity();
+        String packageName = activity.getPackageName();
+        int resId = activity.getResources().getIdentifier(aString, "string", packageName);
+        return activity.getString(resId);
+    }
+
     public static boolean isInForeground() {
       return gForeground;
     }
 
     public static boolean isActive() {
         return gWebView != null;
+    }
+
+    protected static void setRegistrationID(String token) {
+        registration_id = token;
     }
 }

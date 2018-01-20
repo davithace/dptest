@@ -1,0 +1,12 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Trip Liburan",
+  "short_name": "Trip Liburan",
+  "version": "com.tripliburan.android",
+  "description": "Berbagai destinasi wisata yang telah kami siapkan untuk Anda dan keluarga. Are you ready for adventure?",
+  "author": "aplikasihermawan",
+  "icons": [],
+  "start_url": "index.html",
+  "theme_color": "#ee6e73"
+}

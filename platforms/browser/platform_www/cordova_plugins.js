@@ -165,7 +165,7 @@ module.exports.metadata =
     "cordova-plugin-contacts": "2.0.1",
     "cordova-plugin-compat": "1.2.0",
     "cordova-plugin-geolocation-android-activator": "1.1.2",
-    "phonegap-plugin-push": "1.8.0"
+    "phonegap-plugin-push": "2.0.0"
 }
 // BOTTOM OF METADATA
 });

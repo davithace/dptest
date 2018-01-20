@@ -66,13 +66,13 @@ module.exports = {
                     onSuccess(result, { keepCallback: true });
 
                     var context = cordova.require('cordova/platform').activationContext;
-                    var launchArgs = context.args;
+                    var launchArgs = context ? context.args : null;
                     if (launchArgs) {         //If present, app launched through push notification
                         var result = { message: '' };       //Added to identify callback as notification type in the API
                         result.launchArgs = launchArgs;
                         result.additionalData = { coldstart: true };
                         onSuccess(result, { keepCallback: true });
-                    } 
+                    }
                 }, function (error) {
                     onFail(error);
                 });
@@ -88,6 +88,12 @@ module.exports = {
         } catch(ex) {
             onFail(ex);
         }
+    },
+    subscribe: function() {
+        console.log("Subscribe is unsupported");
+    },
+    unsubscribe: function() {
+        console.log("Subscribe is unsupported");
     }
 };
 require("cordova/exec/proxy").add("PushNotification", module.exports);

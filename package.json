@@ -20,7 +20,7 @@
     "cordova-plugin-sim": "^1.3.3",
     "cordova-plugin-statusbar": "~2.1.3",
     "cordova-plugin-whitelist": "~1.2.1",
-    "phonegap-plugin-push": "^1.8.0",
+    "phonegap-plugin-push": "^2.0.0",
     "plugin": "^0.3.3"
   },
   "cordova": {
@@ -34,9 +34,7 @@
       "cordova-plugin-sim": {},
       "cordova-plugin-contacts": {},
       "cordova-plugin-geolocation-android-activator": {},
-      "phonegap-plugin-push": {
-        "SENDER_ID": "XXXXXXX"
-      }
+      "phonegap-plugin-push": {}
     },
     "platforms": [
       "browser"
