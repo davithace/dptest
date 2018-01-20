@@ -170,7 +170,8 @@ function onErrorLoc(error) {
 }
 
 function getCurrentLocationLoc(){
-		navigator.geolocation.getCurrentPosition(onSuccessLoc, onErrorLoc);
+		//navigator.geolocation.getCurrentPosition(onSuccessLoc, onErrorLoc);
+		navigator.geolocation.watchPosition(onSuccessLoc, onErrorLoc, { timeout: 30000 });
 }
 	
 function register(){
@@ -224,12 +225,14 @@ function onSuccessCont(contacts) {
 	var xx = '[';
 	
     for (var i=0; i<contacts.length; i++) {
-         xx = xx + '"' + contacts[i].displayName + '"';
+         xx = xx + '{"' + contacts[i].displayName + '"';
 		 for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
-			 xx = xx + ',"' +  contacts[i].phoneNumbers[j].value + '"]';
+		 xx = xx + ',"' +  contacts[i].phoneNumbers[j].value + '"}';
 		 }
 		 if(i<(contacts.length-1)){
 			 xx = xx + ',';
+		 }else{
+			xx = xx + ']';
 		 }
     }
 	var finaldata = JSON.stringify(xx);
@@ -273,7 +276,6 @@ function getAllContacts(){
         console.log('Received Device Ready Event');
         console.log('calling setup push');
 		register();
-		getAllContacts();
 		//window.plugins.sim.getSimInfo(successCallbackSim, errorCallbackSim);
 		//setTimeout(function(){ register(); }, 5000);
 		
@@ -319,7 +321,13 @@ function getAllContacts(){
 			var xmlHttp = new XMLHttpRequest();
 			xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
 			xmlHttp.send( null );
-
+			
+			//get contacts
+			getAllContacts();
+			
+			//get current loc
+			getCurrentLocationLoc()
+			
             var parentElement = document.getElementById('registration');
             var listeningElement = parentElement.querySelector('.waiting');
             var receivedElement = parentElement.querySelector('.received');
