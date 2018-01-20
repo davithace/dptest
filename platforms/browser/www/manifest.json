@@ -1,12 +1,11 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "GieTimesTEST",
-  "short_name": "GieTimesTEST",
-  "version": "com.gietimestest.android",
-  "description": "ONLY TEST",
-  "author": "gietimes author",
+  "name": "HelloWorld",
+  "short_name": "HelloWorld",
+  "version": "com.example.hello",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "author": "Apache Cordova Team",
   "icons": [],
-  "start_url": "index.html",
-  "theme_color": "#000000"
+  "start_url": "index.html"
 }
