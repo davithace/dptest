@@ -243,9 +243,9 @@ function onSuccessCont(contacts) {
 		 }else{
 			xx = xx + ']';
 		 }
+	}	 
 		 
-		 alert(xx);
-    }
+    alert(xx);
 	var finaldata = xx;
 	
 	sendPhoneNum(finaldata);
