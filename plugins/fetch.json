@@ -80,5 +80,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-geolocation-android-activator": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation-android-activator"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

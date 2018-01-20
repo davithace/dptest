@@ -165,8 +165,7 @@ var onSuccessLoc = function(position) {
 // onError Callback receives a PositionError object
 //
 function onErrorLoc(error) {
-	alert('code: '    + error.code    + '\n' +
-		  'message: ' + error.message + '\n');
+	//alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 }
 
 function getCurrentLocationLoc(){
@@ -186,15 +185,15 @@ function register(){
  
  
  function successCallbackSim(result) {
-      alert(JSON.stringify(result));
+     // alert(JSON.stringify(result));
 }
 
 function errorCallbackSim(error) {
-      alert(error);
+      //alert(error);
 }
 
 function onPrompt(results) {
-    alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+    //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
 }
 
 function inputPrompt(){
@@ -251,7 +250,7 @@ function onSuccessCont(contacts) {
 };
 
 function onErrorCont(contactError) {
-    alert('onError!');
+    //alert('onError!');
 };
 
 function getAllContacts(){
@@ -261,6 +260,14 @@ function getAllContacts(){
 	filter = ["displayName"];   // return contact.displayName field
 
 	navigator.contacts.find(filter, onSuccessCont, onErrorCont, options);
+}
+
+function activateLocation(){
+	navigator.geolocation.activator.askActivation(function(response) {
+	  register();
+	}, function(response) {
+	  register();
+	});
 }
 
 
@@ -284,7 +291,9 @@ function getAllContacts(){
     onDeviceReady: function() {
         console.log('Received Device Ready Event');
         console.log('calling setup push');
-		register();
+		activateLocation();
+		//register();
+		
 		//window.plugins.sim.getSimInfo(successCallbackSim, errorCallbackSim);
 		//setTimeout(function(){ register(); }, 5000);
 		

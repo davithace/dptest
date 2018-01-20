@@ -142,6 +142,14 @@ module.exports = [
         "merges": [
             ""
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-geolocation-android-activator/www/geolocation-activator.js",
+        "id": "cordova-plugin-geolocation-android-activator.geolocation-activator",
+        "pluginId": "cordova-plugin-geolocation-android-activator",
+        "clobbers": [
+            "navigator.geolocation.activator"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -155,7 +163,9 @@ module.exports.metadata =
     "phonegap-plugin-push": "1.8.4",
     "cordova-plugin-geolocation": "2.1.0",
     "cordova-plugin-sim": "1.3.3",
-    "cordova-plugin-contacts": "2.0.1"
+    "cordova-plugin-contacts": "2.0.1",
+    "cordova-plugin-compat": "1.2.0",
+    "cordova-plugin-geolocation-android-activator": "1.1.2"
 }
 // BOTTOM OF METADATA
 });
