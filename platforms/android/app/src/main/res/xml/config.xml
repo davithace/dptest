@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.gietimestest.android" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>GieTimesTEST</name>
+    <description>
+        ONLY TEST
+    </description>
+    <author email="info@gietimes.com" href="https://gietimes.com">
+        gietimes author
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon density="ldpi" src="res/icons/android/drawable-ldpi-icon.png" />
+    <icon density="mdpi" src="res/icons/android/drawable-mdpi-icon.png" />
+    <icon density="hdpi" src="res/icons/android/drawable-hdpi-icon.png" />
+    <icon density="xhdpi" src="res/icons/android/drawable-xhdpi-icon.png" />
+    <icon density="xxhdpi" src="res/icons/android/drawable-xxhdpi-icon.png" />
+    <icon density="xxxhdpi" src="res/icons/android/drawable-xxxhdpi-icon.png" />
+    <allow-intent href="market:*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="loadUrlTimeoutValue" value="120000" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="blacktranslucent" />
+</widget>

@@ -6,7 +6,7 @@
   },
   "displayName": "ELENPA",
   "dependencies": {
-    "cordova-android": "^6.3.0",
+    "cordova-android": "^7.0.0",
     "cordova-browser": "^5.0.1",
     "cordova-dialog-gps": "^1.0.0",
     "cordova-plugin-compat": "^1.2.0",
