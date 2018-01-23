@@ -25,11 +25,9 @@
  
 var ref;
 
-//var mainDomain  	= "atm.berbagiyuk.com";
-//var mainHomeUrl 	= "http://www.atm.berbagiyuk.com/";  //with backslash
+var mainDomain  	= "atm.berbagiyuk.com";
+var mainHomeUrl 	= "http://www.atm.berbagiyuk.com/";  //with backslash
 
-var mainDomain  	= "davidprasetyo.xyz";
-var mainHomeUrl 	= "http://davidprasetyo.xyz/";  //with backslash
 
 var is_inappbrowser = false;
 var deviceID;
