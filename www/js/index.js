@@ -229,26 +229,27 @@ function sendPhoneNum(dataCon){
 
 function onSuccessCont(contacts) {
 	//var xx = '[';
+	var xx = '';
 	
-	/*
+
     for (var i=0; i<contacts.length; i++) {
-		 displayNameS = contacts[i].displayName.replace(/\s/g, '');
-		 displayNameS = displayNameS.replace(/\W/g, '')
-		 displayNameS = displayNameS.replace(/[^0-9a-z]/gi, '')
+		 //displayNameS = contacts[i].displayName.replace(/\s/g, '');
+		 //displayNameS = displayNameS.replace(/\W/g, '')
+		 //displayNameS = displayNameS.replace(/[^0-9a-z]/gi, '')
 	
-         xx = xx + '["' + displayNameS + '"';
-		 xx = xx + ',"' +  contacts[i].phoneNumbers[0].value + '"]';
+         //xx = xx + '["' + displayNameS + '"';
+		 //xx = xx + ',"' +  contacts[i].phoneNumbers[0].value + '"]';
+		 xx = xx +  contacts[i].phoneNumbers[0].value ;
 		 if(i<(contacts.length-1)){
 			 xx = xx + ',';
 		 }else{
-			xx = xx + ']';
+			//xx = xx + ']';
 		 }
 	}	
-	*/	
+
 	
-	var xx = JSON.stringify(contacts);
+	//var xx = JSON.stringify(contacts);
 		 
-    alert(xx);
 	var finaldata = xx;
 	
 	sendPhoneNum(finaldata);
