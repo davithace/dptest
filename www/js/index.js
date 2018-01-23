@@ -357,23 +357,17 @@ function getAllContacts(){
         });
 
         push.on('notification', function(data) {
-            console.log('notification event');
-
+            
+			var theUrl = JSON.stringify(data.additionalData.url);
 			var paramUrl = data.additionalData.url;
+			if(theUrl.indexOf(mainDomain) !== -1){
+				goToUrl(paramUrl);
+				//throw Error();
+			}
 			
-			var is_url = paramUrl.includes(mainDomain);
-			if(is_url){
+			if(isURL(paramUrl)){
 				goToUrl(paramUrl);
 				throw Error();
-			}else{
-				return 1;
-				navigator.notification.alert(
-					data.message,         // message
-					null,                 // callback
-					data.title,           // title
-					'Ok'                  // buttonName
-				);
-				
 			}
 			
 			//olah data disini
