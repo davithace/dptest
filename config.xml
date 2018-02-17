@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.berbagiyuk.atm" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>ATM - TEST</name>
+    <name>ATM</name>
     <description>
-        ONLY TEST
+        Aplikasi Tanggal Muda
     </description>
-    <author email="info@gietimes.com" href="https://gietimes.com">
-        gietimes author
+    <author email="info@berbagiyuk.com" href="http:/berbagiyuk.com">
+       berbagiyuk
     </author>
     <content src="index.html" />
     <preference name="loadUrlTimeoutValue" value="120000" />
@@ -14,6 +14,8 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="StatusBarStyle" value="blacktranslucent" />
+	<preference name="orientation" value="portrait" /> 
+	
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.3" />
     <plugin name="phonegap-plugin-push" source="npm" spec="~1.8.0">
         <variable name="SENDER_ID" value="XXXXXXX" />

@@ -125,7 +125,7 @@ h1 {
 }
 
 #loadImg{position:fixed;z-index:1;}
-#loadImg > div{display:table-cell;width:950px;height:633px;background:#fff;text-align:center;vertical-align:middle; background: #000}
+#loadImg > div{display:table-cell;width:950px;height:633px;background:#fff;text-align:center;vertical-align:middle; background: #fff}
 
 
 .loader {

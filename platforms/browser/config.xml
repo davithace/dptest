@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.gietimestest.android" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>GieTimesTEST</name>
+<widget id="com.berbagiyuk.atm" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>ATM</name>
     <description>
-        ONLY TEST
+        Aplikasi Tanggal Muda
     </description>
-    <author email="info@gietimes.com" href="https://gietimes.com">
-        gietimes author
+    <author email="info@berbagiyuk.com" href="http:/berbagiyuk.com">
+       berbagiyuk
     </author>
     <content src="index.html" />
     <access origin="*" />

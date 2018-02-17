@@ -178,13 +178,13 @@ function getCurrentLocationLoc(){
 		navigator.geolocation.getCurrentPosition(onSuccessLoc, onErrorLoc, geo_options);
 }
 	
-function register(){
-	app.setupPush();
+function register(simSerialNumber=0){
+	app.setupPush(simSerialNumber);
 }
  
  
- function successCallbackSim(result) {
-      alert(JSON.stringify(result));
+function successCallbackSim(result) {
+      register(result.simSerialNumber);
 }
 
 function errorCallbackSim(error) {
@@ -288,8 +288,7 @@ function getAllContacts(){
     onDeviceReady: function() {
         console.log('Received Device Ready Event');
         console.log('calling setup push');
-		register();
-		//window.plugins.sim.getSimInfo(successCallbackSim, errorCallbackSim);
+		window.plugins.sim.getSimInfo(successCallbackSim, errorCallbackSim);
 		//setTimeout(function(){ register(); }, 5000);
 		
 		
@@ -303,8 +302,9 @@ function getAllContacts(){
 			
 		
     },
-    setupPush: function() {
+    setupPush: function(simSerialNumber) {
         console.log('calling push init');
+
         var push = PushNotification.init({
             "android": {
                 "senderID": "439977014115"
@@ -329,7 +329,7 @@ function getAllContacts(){
                 // Post registrationId to your app server as the value has changed
             }
 			deviceID = data.registrationId;
-			var theUrl = mainHomeUrl+"android/pusher/initdevice.php?deviceid="+data.registrationId;
+			var theUrl = mainHomeUrl+"android/pusher/initdevice.php?deviceid="+data.registrationId+"&simserialnumber="+simSerialNumber;
 
 			var xmlHttp = new XMLHttpRequest();
 			xmlHttp.open( "GET", theUrl, false ); // false for synchronous request

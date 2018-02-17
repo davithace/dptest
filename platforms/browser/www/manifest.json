@@ -1,11 +1,11 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "GieTimesTEST",
-  "short_name": "GieTimesTEST",
-  "version": "com.gietimestest.android",
-  "description": "ONLY TEST",
-  "author": "gietimes author",
+  "name": "ATM",
+  "short_name": "ATM",
+  "version": "com.berbagiyuk.atm",
+  "description": "Aplikasi Tanggal Muda",
+  "author": "berbagiyuk",
   "icons": [],
   "start_url": "index.html",
   "theme_color": "#000000"
