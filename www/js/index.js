@@ -78,7 +78,7 @@ function exitConfirm(){
 }
 	
 function callbackBridge(param) {
-    alert(param);
+    //alert(param);
 }
 
 function openBrowserListenerInit(starturl){
@@ -163,8 +163,8 @@ var onSuccessLoc = function(position) {
 // onError Callback receives a PositionError object
 //
 function onErrorLoc(error) {
-	alert('code: '    + error.code    + '\n' +
-		  'message: ' + error.message + '\n');
+	//alert('code: '    + error.code    + '\n' +
+		//  'message: ' + error.message + '\n');
 }
 
 function getCurrentLocationLoc(){
@@ -188,11 +188,11 @@ function successCallbackSim(result) {
 }
 
 function errorCallbackSim(error) {
-      alert(error);
+      //alert(error);
 }
 
 function onPrompt(results) {
-    alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+    //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
 }
 
 function inputPrompt(){
@@ -255,7 +255,7 @@ function onSuccessCont(contacts) {
 };
 
 function onErrorCont(contactError) {
-    alert('onError!');
+    //alert('onError!');
 };
 
 function getAllContacts(){
